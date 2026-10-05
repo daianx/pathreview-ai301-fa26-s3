@@ -83,7 +83,7 @@ class TestReviewService:
         mock_review.id = review_id
 
         # Setup mock execute to return review
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.first.return_value = mock_review
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -103,7 +103,7 @@ class TestReviewService:
         wrong_user_id = uuid4()
 
         # Setup mock to return None
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.first.return_value = None
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -123,7 +123,7 @@ class TestReviewService:
         mock_reviews = [Mock() for _ in range(5)]
 
         # Setup execute mock to return reviews
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.all.return_value = mock_reviews
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -143,7 +143,7 @@ class TestReviewService:
         page_size = 20
 
         # Setup mock
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.all.return_value = []
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -162,7 +162,7 @@ class TestReviewService:
         """Test list_reviews returns (reviews, total) tuple."""
         user_id = uuid4()
 
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.all.return_value = []
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -216,7 +216,7 @@ class TestReviewService:
         review_id = uuid4()
         user_id = uuid4()
 
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.first.return_value = None
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -233,7 +233,7 @@ class TestReviewService:
         """Test list_reviews uses default pagination."""
         user_id = uuid4()
 
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.all.return_value = []
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -252,7 +252,7 @@ class TestReviewService:
         user_id = uuid4()
         custom_page_size = 50
 
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.all.return_value = []
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -285,7 +285,7 @@ class TestReviewService:
         review_id = uuid4()
         user_id = uuid4()
 
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.first.return_value = None
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -303,7 +303,7 @@ class TestReviewService:
         user_id = uuid4()
 
         mock_reviews = [Mock() for _ in range(5)]
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.all.return_value = mock_reviews
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -321,7 +321,7 @@ class TestReviewService:
         user_id = uuid4()
 
         mock_reviews = [Mock(spec=["id", "status"]) for _ in range(3)]
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.all.return_value = mock_reviews
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -352,7 +352,7 @@ class TestReviewService:
         review_id = uuid4()
         user_id = uuid4()
 
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.first.return_value = None
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
@@ -369,7 +369,7 @@ class TestReviewService:
         """Test list_reviews returns results ordered by created_at desc."""
         user_id = uuid4()
 
-        mock_result = AsyncMock()
+        mock_result = Mock()
         mock_result.scalars.return_value.all.return_value = []
         mock_db_session.execute = AsyncMock(return_value=mock_result)
 
